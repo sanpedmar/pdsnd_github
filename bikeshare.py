@@ -26,20 +26,20 @@ msg_for_invalid_get_filter = {
 
 No_filter = 'No filter selected'
 
-def get_input(input_valid_msg,input_invalid_msg, list):
+def get_input(input_valid_msg, input_invalid_msg, valid_inputs):
     """
-    Sets dialogue to the user, until he inputs the correct expected value without breaking the code
+    Sets dialogue to the user until they input the correct expected value without breaking the code.
 
     Args:
-        (str) - input_valid_msg - message that guides the user on what data to input/supply
-        (str) - input_invalid_msg - msg that informs user that his last input was not valid
-        (list)- list - of possible valid inputs that can be entered  
-    
+        input_valid_msg (str): Message that guides the user on what data to input/supply.
+        input_invalid_msg (str): Message that informs the user that their last input was not valid.
+        valid_inputs (list): List of possible valid inputs that can be entered.
+
     Returns:
-        (str) - user's chosen option
+        str: The user's chosen option.
     """
     val = input(input_valid_msg).lower().strip()
-    while val not in list:
+    while val not in valid_inputs:
         val = input(input_invalid_msg).lower().strip()
     return val
 
@@ -141,7 +141,7 @@ def time_stats(df):
     # display the most common start month
     most_common_month = df['month'].mode()[0]
     print(f'The most common start month is: {most_common_month} ({calendar.month_name[most_common_month]})')
-
+    
     # display the most common day of week
     # get the name of the most common day of the week using the calendar module
     most_common_day = df['day_of_week'].mode()[0]
